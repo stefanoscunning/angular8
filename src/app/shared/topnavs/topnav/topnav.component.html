@@ -1,13 +1,13 @@
-<div class="container-fluid topnav">
+<div class="container-fluid bg-white">
     <div class="row">
-        <div class="col">
-          <img class="img-responsive" src="" style="max-height: 50px">         
+        <div *ngIf="!desktop" class="col">
+          <img src="" style="max-height: 50px">         
         </div>       
         <div class="col text-right">   
           <div id="btnUserSettings" ngbDropdown class="d-inline-block btnUserSettings" placement="bottom-right">
-            <button class="btn btn-light" id="dropdownBasic1" ngbDropdownToggle><i class="far fa-user"></i></button>
+            <button class="btn darken-1 btn-outline-red" id="dropdownBasic1" ngbDropdownToggle><i class="far fa-user"></i></button>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button (click)="signOut()" class="dropdown-item">Log out</button>
+              <button (click)="signOut()" class="dropdown-item">{{local.logout}}</button>
             </div>
           </div>
         </div>

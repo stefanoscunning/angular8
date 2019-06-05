@@ -1,0 +1,26 @@
+.splashPage{
+    max-width:300px;
+    min-width: 200px;
+    height:100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.splashHeader{
+    font-size: 1.0em;
+    font-weight: bold;
+    
+}
+.mobileLabel{
+    margin-top:10px;
+    font-size:0.8em;
+}
+.windowsblue{
+    color: darkcyan;
+}
+.androidgreen{
+    color: chartreuse;
+}
+.applegrey{
+    color: darkgrey;
+}

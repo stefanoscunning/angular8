@@ -4,14 +4,18 @@ import { RouterModule } from "@angular/router";
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { topnavComponent } from './topnavs/topnav/topnav.component';
 import { FooterComponent } from './footers/footer/footer.component';
+import { topnavComponent } from './topnavs/topnav/topnav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+
 
 @NgModule({
     exports: [
         CommonModule,
         topnavComponent,
         FooterComponent,
+        SidebarComponent,
+       
         NgbModule
     ],
     imports: [
@@ -22,8 +26,10 @@ import { FooterComponent } from './footers/footer/footer.component';
         
     ],
     declarations: [
+        FooterComponent,
         topnavComponent,
-        FooterComponent
+        SidebarComponent,
+       
         
     ]
 })

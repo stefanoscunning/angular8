@@ -30,10 +30,12 @@
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/assets/sass/app.scss",
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/perfect-scrollbar.jquery.min.js"
             ]
           },
           "configurations": {

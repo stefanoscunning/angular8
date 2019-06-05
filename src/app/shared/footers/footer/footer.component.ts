@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 declare var require: any;
+const localisation: any = require('../../../../assets/data/localisation.json');
 
 @Component({
   selector: 'app-footer',
@@ -10,8 +11,8 @@ declare var require: any;
 })
 export class FooterComponent implements OnInit {
   baseHref = environment.base.url;
-  
   envName: string;
+  local = localisation;
   @Input() mobile: boolean = false;
   @Input() tablet: boolean = false;
   @Input() desktop: boolean = false;
