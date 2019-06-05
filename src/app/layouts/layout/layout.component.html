@@ -1,0 +1,17 @@
+
+<div class="wrapper">
+  <app-topnav [mobile]="mobile" [tablet]="tablet" [desktop]="desktop"></app-topnav>
+  <br>
+  <div class="main-panel">
+      <div class="main-content">
+          <div class="content-wrapper">
+              <div class="container-fluid">
+                  <router-outlet></router-outlet>
+              </div>
+          </div>
+      </div>   
+  </div>
+  <br>
+  <app-footer [mobile]="mobile" [tablet]="tablet" [desktop]="desktop"></app-footer>
+</div>
+
