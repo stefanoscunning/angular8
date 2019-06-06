@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 import { environment } from '../../../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 declare var require: any;
 const localisation: any = require('../../../../assets/data/localisation.json');
 
@@ -25,13 +25,13 @@ export class FooterComponent implements OnInit {
   timesheetsClassName: string;
   timesheetsLink: string = "/timesheets";
   
-  constructor(private location: Location, private router: Router) { 
+  constructor(private location: Location, private router: Router, private route: ActivatedRoute) { 
     this.envName = environment.envName;
 
   }
 
   setLocationClass(){
-   
+   console.log(this.router);
     switch(this.router.url){
       case  "/dashboard":
       this.dashboardClassName = "active";
@@ -48,7 +48,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
    
       this.menuClassName = "red darken-1";
-      this.setLocationClass();
+      //this.setLocationClass();
 
   }
 
