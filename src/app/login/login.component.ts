@@ -29,7 +29,7 @@ envName = environment.envName;
                 let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
                 //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
                 if(currentUser && currentUser.token){
-                    this.router.navigate(['/home']);
+                    this.router.navigate(['/dashboard']);
                 }
                 
                 

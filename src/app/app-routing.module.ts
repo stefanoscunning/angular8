@@ -11,7 +11,7 @@ const appRoutes: Routes = [
   {path: 'login', loadChildren: () => import(`./login/login.module`).then(m => m.LoginModule)},
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   { path: '', component: LayoutComponent, data: { title: '' }, children: ROUTES, canActivate: [AuthGuard] },

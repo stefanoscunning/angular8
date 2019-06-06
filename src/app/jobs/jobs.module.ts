@@ -1,28 +1,27 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbModule, NgbTypeaheadModule, NgbAlertModule, NgbCollapseModule, NgbPaginationModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './home.component';
-import { HomeRoutingModule } from './home-routing.module';
+import { NgbModule, NgbTypeaheadModule, NgbCollapseModule, NgbPaginationModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { JobsComponent } from './jobs.component';
+import { JobsRoutingModule } from './jobs-routing.module';
 import {NgSelectModule, NgSelectConfig } from '@ng-select/ng-select';
 
 @NgModule({
     imports: [
         CommonModule,
-        HomeRoutingModule,
+        JobsRoutingModule,   
         FormsModule,
         ReactiveFormsModule,
         NgSelectModule,
         NgbModule,
         NgbTypeaheadModule,
-        NgbAlertModule,
         NgbCollapseModule,
         NgbPaginationModule,
         NgbTabsetModule,
         NgbTooltipModule
     ],
     declarations: [
-        HomeComponent
+        JobsComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
     providers:[
@@ -39,4 +38,4 @@ import {NgSelectModule, NgSelectConfig } from '@ng-select/ng-select';
         }
     ]
 })
-export class HomeModule { }
+export class JobsModule { }

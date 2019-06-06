@@ -6,13 +6,13 @@ import { environment } from '../../../environments/environment';
 export const ROUTES: RouteInfo[] = [
 
     {
-        path: '/home', title: localisation.dashboard, icon: 'fas fa-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
+        path: '/dashboard', title: localisation.dashboard, icon: 'fas fa-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     },
     {
-        path: '/jobs', title: localisation.jobs, icon: 'fas fa-clipboard', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
+        path: '/jobs', title: localisation.jobs, icon: 'fas fa-tasks', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     },
     {
-        path: '/timesheets', title: localisation.timesheets, icon: 'fas fa-user-clock', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
+        path: '/timesheets', title: localisation.timesheets, icon: 'far fa-clock', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     }
     
 ];

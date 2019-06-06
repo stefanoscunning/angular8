@@ -8,39 +8,15 @@ import {Observable,Subject, concat, of, Subscription} from 'rxjs';
 import { Router } from '@angular/router';
 import * as $ from "jquery";
 
-interface Alert {
-  type: string;
-  message: string;
-  location: string;
-}
-
-const ALERTS: Alert[] = [
-  {
-    type: 'info',
-    message: 'All your timesheets have been processed.',
-    location: '/timesheets',
-  }, {
-    type: 'warning',
-    message: 'You have been assigned a new job.',
-    location: '/jobs'
-  }, {
-    type: 'danger',
-    message: "You haven't synced a job to the server yet.",
-    location: '/jobs'
-  }
-];
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-timesheets',
+  templateUrl: './timesheets.component.html',
+  styleUrls: ['./timesheets.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class TimesheetsComponent implements OnInit, OnDestroy {
   
     userId: number = null;
     subscriptions:Subscription[] = [];
-    alerts: Alert[] = [];
     
 
   constructor(private deviceDetector: DeviceDetectorService, 
@@ -50,22 +26,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
           if(currentUser && currentUser.token){
             this.userId = currentUser.id;
-            this.reset();
+          
         }
       
     }
 
-    close(alert: Alert) {
-      this.alerts.splice(this.alerts.indexOf(alert), 1);
-    }
   
-    reset() {
-      this.alerts = Array.from(ALERTS);
-    }
-
-    goTo(location: string) {
-      this.router.navigate([location])
-    }
 
 
 ngOnInit() {

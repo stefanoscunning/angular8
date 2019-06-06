@@ -1,0 +1,29 @@
+.bookmarks{
+    padding-top:5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eeeeee;    
+}
+
+.bookmarks h6{
+    color: #999999;
+    padding-left: 5px;
+}
+
+.histories h6{
+    color: #999999;
+    padding-left: 5px;
+}
+
+.question .list-group-item:hover{
+    background-color:#cccccc;
+    cursor: pointer;    
+}
+
+.progress-step{
+    cursor: pointer;
+}
+
+.dd-header{
+    font-weight: bold;
+    padding-left: 1em;
+}
