@@ -1,8 +1,8 @@
 <div class="footer bg-white">
     <nav class="nav nav-pills nav-justified">
-         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{dashboardClassName}}" href="{{baseHref}}dashboard"><i class="fas fa-home"></i><br>{{local.dashboard}}</a>         
-         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{jobsClassName}}" href="{{baseHref}}jobs"><i class="fas fa-tasks"></i><br>{{local.jobs}}</a>         
-         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{timesheetsClassName}}" href="{{baseHref}}timesheets"><i class="far fa-clock"></i><br>{{local.timesheets}}</a>         
+         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{dashboardClassName}}" [routerLink]="dashboardLink"><i class="fas fa-home"></i><br>{{local.dashboard}}</a>         
+         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{jobsClassName}}" [routerLink]="jobsLink"><i class="fas fa-tasks"></i><br>{{local.jobs}}</a>         
+         <a class="nav-item nav-link font-small-3 {{menuClassName}} {{timesheetsClassName}}" [routerLink]="timesheetsLink"><i class="far fa-clock"></i><br>{{local.timesheets}}</a>         
      </nav>
  </div>
     

@@ -19,8 +19,11 @@ export class FooterComponent implements OnInit {
   @Input() desktop: boolean = false;
   menuClassName: string;
   dashboardClassName: string;
+  dashboardLink: string = "/dashboard";
   jobsClassName: string;
+  jobsLink: string = "/jobs";
   timesheetsClassName: string;
+  timesheetsLink: string = "/timesheets";
   
   constructor(private location: Location, private router: Router) { 
     this.envName = environment.envName;
