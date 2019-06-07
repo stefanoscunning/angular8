@@ -4,7 +4,63 @@
     </div>
     <div class="card-body">
         <div class="card-block">
-            
+            <h5>Today's Schedule</h5>
+            <table class="table" [ngClass]="{'table-responsive': mobile || tablet}">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>SMO</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of todayJobs">
+                        <td>{{item.time}}</td>
+                        <td>{{item.company}}</td>
+                        <td>{{item.location}}</td>
+                        <td>{{item.smo}}</td>
+                        <td>
+                           
+                                <button (click)="action('download', item)" title="Download for offline" *ngIf="!item.downloaded" type="button" class="btn btn-raised btn-block btn-info"><i class="fas fa-download"></i> Download</button>                                
+                                <button (click)="action('start', item)" title="Start job" *ngIf="item.downloaded && !item.started" type="button" class="btn btn-raised btn-block btn-success"><i class="far fa-play-circle"></i> Start</button>
+                                <button (click)="action('continue', item)" title="Continue job" *ngIf="item.downloaded && item.started && !item.completed && !item.synced" type="button" class="btn btn-raised btn-block btn-warning"><i class="far fa-pause-circle"></i> Continue</button>
+                                <button (click)="action('sync', item)" title="Sync job" *ngIf="item.downloaded && item.started && item.completed && !item.synced" type="button" class="btn btn-raised btn-block btn-danger"><i class="fas fa-sync"></i> Sync</button>                                
+                                <button (click)="action('completed', item)" title="Job Completed" *ngIf="item.downloaded && item.started && item.completed && item.synced" type="button" class="btn btn-raised btn-block btn-light"><i class="fas fa-check"></i> Completed</button>                                
+                          
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h5>10 June 2019</h5>
+            <table class="table" [ngClass]="{'table-responsive': mobile || tablet}">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>SMO</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of jobs">
+                        <td>{{item.time}}</td>
+                        <td>{{item.company}}</td>
+                        <td>{{item.location}}</td>
+                        <td>{{item.smo}}</td>
+                        <td>
+                                <button (click)="action('download', item)" title="Download for offline" *ngIf="!item.downloaded" type="button" class="btn btn-raised btn-block btn-info"><i class="fas fa-download"></i> Download</button>                                
+                                <button (click)="action('start', item)" title="Start job" *ngIf="item.downloaded && !item.started" type="button" class="btn btn-raised btn-block btn-success"><i class="far fa-play-circle"></i> Start</button>
+                                <button (click)="action('continue', item)" title="Continue job" *ngIf="item.downloaded && item.started && !item.completed && !item.synced" type="button" class="btn btn-raised btn-block btn-warning"><i class="far fa-pause-circle"></i> Continue</button>
+                                <button (click)="action('sync', item)" title="Sync job" *ngIf="item.downloaded && item.started && item.completed && !item.synced" type="button" class="btn btn-raised btn-block btn-danger"><i class="fas fa-sync"></i> Sync</button>                                
+                                <button (click)="action('completed', item)" title="Job Completed" *ngIf="item.downloaded && item.started && item.completed && item.synced" type="button" class="btn btn-raised btn-block btn-light"><i class="fas fa-check"></i> Completed</button>                                
+                          
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
