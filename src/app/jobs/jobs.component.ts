@@ -95,6 +95,10 @@ export class JobsComponent implements OnInit, OnDestroy {
     subscriptions:Subscription[] = [];
     jobs: Job[] = [];
     todayJobs: Job[] = [];
+    showList: boolean = true;
+    showJob: boolean = false;
+    selectedJob: Job;
+    showDropdown: boolean = false;
     
 
   constructor(private deviceDetector: DeviceDetectorService, 
@@ -120,7 +124,9 @@ export class JobsComponent implements OnInit, OnDestroy {
         job.started = true;
         break;
         case 'continue':
-        job.completed = true;
+        this.showList = false;
+        this.showJob = true;
+        this.selectedJob = job;
         break;
         case 'sync':
         job.synced = true;
@@ -128,6 +134,15 @@ export class JobsComponent implements OnInit, OnDestroy {
       }
     }
 
+    complete(){
+      this.selectedJob.completed = true;
+      this.showJob = false;
+      this.showList = true;
+    }
+
+    markCriteria(){
+      this.showDropdown = true;
+    }
     
 
     reset() {

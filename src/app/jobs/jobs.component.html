@@ -1,9 +1,9 @@
-<div class="card">
+<div *ngIf="showList" class="card">
     <div class="card-header">
         <h4 class="card-title">Jobs</h4>
     </div>
     <div class="card-body">
-        <div class="card-block">
+        <div  class="card-block">
             <h5>Today's Schedule</h5>
             <table class="table" [ngClass]="{'table-responsive': mobile || tablet}">
                 <thead>
@@ -61,6 +61,72 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="showJob" class="card">
+    <div class="card-header">
+        <h4 class="card-title">{{selectedJob.company}} - {{selectedJob.smo}}</h4>
+    </div>
+    <div class="card-body">
+        <div class="card-block">
+            <ngb-accordion [closeOthers]="true" activeIds="static-1">
+                <ngb-panel id="static-1">
+                <ng-template ngbPanelTitle>
+                            <span>Introduction</span>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                   <p>This is the introduction</p>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-2">
+                        <ng-template ngbPanelTitle>
+                                    <span>Mandatory Requirements</span>
+                          </ng-template>
+                          <ng-template ngbPanelContent>
+                                <p>These are the mandatory requirements</p>
+                          </ng-template>
+                        </ngb-panel>
+                        <ngb-panel id="static-3">
+                                <ng-template ngbPanelTitle>
+                                            <span>Findings</span>
+                                  </ng-template>
+                                  <ng-template ngbPanelContent>
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <label for="criteria">Has this item met the criteria?</label>
+                                        </div>    
+                                        <div class="col-sm-3">
+                                            <label class="switch">
+                                                <input type="checkbox" (change)="markCriteria()" id="criteria" name="criteria">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>               													
+                                    </div>
+                                    <div *ngIf="showDropdown" class="row">
+                                        <div class="col-sm-12">
+                                                <ng-select>
+                                                        <ng-option [value]="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus cursus libero non lacus placerat, in dapibus eros vestibulum. Morbi felis nulla, euismod eget massa ut, pellentesque elementum lorem. </ng-option>
+                                                        <ng-option [value]="2">Quisque quis nunc sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus faucibus in purus a viverra. Aliquam et pellentesque velit, placerat mollis ex. Pellentesque at blandit ligula. Nam dictum metus non nisl dictum dictum eget in velit.</ng-option>
+                                                        <ng-option [value]="3">In tincidunt urna quam, in volutpat turpis maximus ut. In ullamcorper libero euismod, consectetur lectus sed, aliquet mauris. Ut nibh nibh, elementum a nunc sed, ultricies semper urna. Proin sodales lorem sit amet lacinia volutpat. Integer auctor, leo vitae auctor dapibus, odio lectus scelerisque erat, vitae dictum sem leo id neque. Praesent gravida egestas metus, et iaculis sem pretium id.</ng-option>
+                                            </ng-select> 
+                                        </div>
+                                    </div>
+                                        
+
+                                
+                                  </ng-template>
+                                </ngb-panel>
+                                <ngb-panel id="static-4">
+                                        <ng-template ngbPanelTitle>
+                                                    <span>Certificate Assessment Program</span>
+                                          </ng-template>
+                                          <ng-template ngbPanelContent>
+                                                <p>This is the Certificate Assessment Program</p>
+                                          </ng-template>
+                                        </ngb-panel>
+              </ngb-accordion>
+              <button (click)="complete()" type="button" class="btn btn-primary btn-block btn-raised">Submit</button>
         </div>
     </div>
 </div>
