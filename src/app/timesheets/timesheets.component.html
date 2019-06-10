@@ -1,9 +1,64 @@
-<div class="card">
+<div *ngIf="job == null" class="card">
     <div class="card-header">
         <h4 class="card-title">Timesheets</h4>
     </div>
     <div class="card-body">
         <div class="card-block">
+            <h5>Jobs</h5>
+            <div class="list-group">
+                <a (click)="selectJob(j)" *ngFor="let j of jobs" class="list-group-item list-group-item-action">
+                    {{j.company}}
+                    <p class="small">SMO: {{j.smo}}</p>
+                    
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="job!=null" class="card">
+    <div class="card-header">
+        <h4 class="card-title">{{job.company}} - {{job.smo}}</h4>
+        <div class="text-right">
+            <a class="btn btn-primary btn-raised" (click)="backToJobs()"><i class="fas fa-backspace"></i></a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="card-block">
+            <table *ngIf="!editingTimesheet" class="table table-striped">
+                <tr>
+                    <th>Auditor</th>
+                    <th>Total Hours</th>
+                    <th>Options</th>
+                </tr>
+                <tr>
+                    <td>{{timesheet.auditor}}</td>
+                    <td>{{timesheet.hour}}</td>
+                    <td>
+                        <button *ngIf="!job.submitted" (click)="editTimesheet()" type="button" class="mr-2 btn btn-info btn-raised"><i class="fas fa-edit"></i> Edit</button>
+                        <button *ngIf="!job.submitted" (click)="submitTimesheet(job)"  class="btn btn-warning btn-raised"><i class="fas fa-upload"></i> Submit</button>
+                        <button *ngIf="job.submitted" class="btn btn-light btn-raised"><i class="fas fa-check"></i> Complete</button>
+                    </td>
+                </tr>
+            </table>
+            <div *ngIf="editingTimesheet">
+                    <div class="row">
+                            <div class="col-sm-12">Auditor:  {{timesheet.auditor}}</div>
+                        </div>
+                    <div class="row">
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" [(ngModel)]="timesheet.hour">
+                            </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6">
+                            <button (click)="cancelEdit()" class="btn btn-secondary btn-raised btn-block">Cancel</button>
+                        </div>
+                        <div class="col-sm-6">
+                                <button (click)="saveEdit()" class="btn btn-primary btn-raised btn-block">Save</button>
+                            </div>
+                    </div>
+            </div>
             
         </div>
     </div>

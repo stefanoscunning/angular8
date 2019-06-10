@@ -7,6 +7,8 @@ import { first, debounceTime, distinctUntilChanged, tap, switchMap, catchError, 
 import {Observable,Subject, concat, of, Subscription} from 'rxjs';
 import { Router } from '@angular/router';
 import * as $ from "jquery";
+import {Choice} from '../models';
+import {ChoiceService} from '../services';
 
 interface Job {
   company: string;
@@ -19,6 +21,7 @@ interface Job {
   date: string;
   time: string;
 }
+
 
 
 const JOBS: Job[] = [
@@ -99,10 +102,15 @@ export class JobsComponent implements OnInit, OnDestroy {
     showJob: boolean = false;
     selectedJob: Job;
     showDropdown: boolean = false;
+    choices: Choice[] = [];
+    selectedReq: Choice = null;
+    showListGroup: boolean = false;
+    selectedCriteria: Choice = null;
     
 
   constructor(private deviceDetector: DeviceDetectorService, 
-    private modalService: NgbModal, private router: Router    
+    private modalService: NgbModal, private router: Router,
+    private choiceService: ChoiceService    
     ) { 
         let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         //let currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -134,20 +142,56 @@ export class JobsComponent implements OnInit, OnDestroy {
       }
     }
 
+    selectChoice(choice: Choice){
+      this.selectedReq = choice;
+    }
+
     complete(){
       this.selectedJob.completed = true;
       this.showJob = false;
       this.showList = true;
     }
 
+    markReq(){
+      if(this.showListGroup){
+        this.showListGroup = false;
+      }
+      else{
+        this.showListGroup = true;
+      }
+      this.selectedReq = null;
+    }
+
     markCriteria(){
-      this.showDropdown = true;
+      if(this.showDropdown){
+        this.showDropdown = false;
+      }
+      else{
+        this.showDropdown = true;
+      }
+      this.selectedCriteria = null;
+      
+    }
+
+    onAdd(evt: any){
+
+    }
+
+    onChange(evt: any){
+      this.selectedCriteria = evt;
+    }
+
+    onClear(evt: any){
+      this.selectedCriteria = null;
     }
     
 
     reset() {
       this.todayJobs = Array.from(JOBS).filter(x=>x.date=='07/06/2019');
       this.jobs = Array.from(JOBS).filter(x=>x.date!='07/06/2019');
+     
+
+
     }  
 
     initDeviceInfo(){
@@ -159,7 +203,18 @@ export class JobsComponent implements OnInit, OnDestroy {
 
 ngOnInit() {
    this.reset();
+   this.loadChoices();
    
+}
+
+
+
+private loadChoices() {
+  this.choiceService.getAll().pipe(first()).subscribe(data =>{
+    this.choices = data;
+    
+  });
+  
 }
 
 ngOnDestroy(): void {

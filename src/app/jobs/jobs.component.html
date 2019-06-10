@@ -84,7 +84,25 @@
                                     <span>Mandatory Requirements</span>
                           </ng-template>
                           <ng-template ngbPanelContent>
-                                <p>These are the mandatory requirements</p>
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <label for="criteria">Have the mandatory requirements been met?</label>
+                                </div>    
+                                <div class="col-sm-3">
+                                    <label class="switch">
+                                        <input type="checkbox" (change)="markReq()" id="criteria" name="criteria">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>               													
+                            </div>
+                            <div *ngIf="showListGroup" class="row">
+                                <div class="col-sm-12">
+                                       <div *ngIf="selectedReq == null" class="list-group">
+                                           <a *ngFor="let c of choices" (click)="selectChoice(c)" class="list-group-item list-group-item-action">{{c.label}}</a>                                        
+                                       </div>
+                                       <p>{{selectedReq?.label}}</p>
+                                </div>
+                            </div>
                           </ng-template>
                         </ngb-panel>
                         <ngb-panel id="static-3">
@@ -94,22 +112,21 @@
                                   <ng-template ngbPanelContent>
                                     <div class="row">
                                         <div class="col-sm-9">
-                                            <label for="criteria">Has this item met the criteria?</label>
+                                            <label for="criteria2">Has this item met the criteria?</label>
                                         </div>    
                                         <div class="col-sm-3">
                                             <label class="switch">
-                                                <input type="checkbox" (change)="markCriteria()" id="criteria" name="criteria">
+                                                <input type="checkbox" (change)="markCriteria()" id="criteria2" name="criteria2">
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>               													
                                     </div>
                                     <div *ngIf="showDropdown" class="row">
                                         <div class="col-sm-12">
-                                                <ng-select>
-                                                        <ng-option [value]="1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus cursus libero non lacus placerat, in dapibus eros vestibulum. Morbi felis nulla, euismod eget massa ut, pellentesque elementum lorem. </ng-option>
-                                                        <ng-option [value]="2">Quisque quis nunc sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus faucibus in purus a viverra. Aliquam et pellentesque velit, placerat mollis ex. Pellentesque at blandit ligula. Nam dictum metus non nisl dictum dictum eget in velit.</ng-option>
-                                                        <ng-option [value]="3">In tincidunt urna quam, in volutpat turpis maximus ut. In ullamcorper libero euismod, consectetur lectus sed, aliquet mauris. Ut nibh nibh, elementum a nunc sed, ultricies semper urna. Proin sodales lorem sit amet lacinia volutpat. Integer auctor, leo vitae auctor dapibus, odio lectus scelerisque erat, vitae dictum sem leo id neque. Praesent gravida egestas metus, et iaculis sem pretium id.</ng-option>
-                                            </ng-select> 
+                                            <select *ngIf="selectedCriteria == null" (ngModelChange)="onChange($event)" class="form-control" [(ngModel)]="selectedCriteria">
+                                                <option *ngFor="let c of choices" [ngValue]="c">{{c.label}}</option>
+                                            </select>
+                                            <p>{{selectedCriteria?.label}}</p>
                                         </div>
                                     </div>
                                         
